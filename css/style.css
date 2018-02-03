@@ -229,6 +229,8 @@ a:active must come after a:hover to be effective
   background-color: white;
 }
 
+/* TODO? https://www.udemy.com/advanced-css-and-sass/learn/v4/questions/3162218 */
+
 .btn:hover::after {
   transform: scale(1.4, 1.6); /* transform from original state, original state is .btn:hover */
   opacity: 0;
