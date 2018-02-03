@@ -338,3 +338,27 @@ Summary
     - rem - relative to root's font-size, for both font-size and lengths
     - vw, vh - percentage measurements of viewport's view and height
 */
+
+/*
+Lecture 17, Section 3
+
+Inheritance in CSS
+
+Recall that every CSS property must have a value
+
+if there's a cascaded value --> specified value = cascaded value
+else if the property is inherited --> specified value = *computed value* of parent element
+else specified value = initial value
+  - Note that not all properties can be inherited, see docs
+  - See 2:11 in lecture 17 for the flow chart
+
+Summary:
+  1) Properties related to text are inherited: font-family, font-size, color, etc.
+    - it makes no sense to inherit properties like margin and padding
+  2) The computed value of a property is what gets inherited, not the declared value
+  3) Inheritance of a property only works if no one declares a value for that property
+    - neither the developer nor the browser
+  4) The 'inherit' keyword forces inheritance on a certain property
+  5) The 'initial' keyword resets a property to its initial value
+
+*/
