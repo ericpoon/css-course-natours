@@ -43,8 +43,49 @@ body {
   ), url(../img/hero.jpg);
   background-size: cover; /* cover means always try to fit */
   background-position: top; /* the fixed edge of the image */
-
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* can use online css clip-path maker */
+
+  position: relative; /* if child elements are positioned using 'absolute', this will be the origin */
 }
 
 /* TODO? difference between viewport height and percentage */
+
+.logo-box {
+  position: absolute;
+  top: 40px; /* count from the first relative-positioned ancestor */
+  left: 40px;
+}
+
+.logo {
+  /* the width will scale accordingly,
+   can also control width and let browser figure out the height as well */
+  height: 35px;
+}
+
+.text-box {
+  position: absolute;
+  top: 40%; /* move it tiny bit upper so we use 40% instead of 50% */
+  left: 50%; /* 50% here refers to the parent's height/width */
+  transform: translate(-50%, -50%); /* 50% here refers to the h/w of itself */
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.heading-primary-main {
+  /* span element is by default an inline element */
+  /* block elements occupy the entire width available and creates linebreak after and before them */
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+}
