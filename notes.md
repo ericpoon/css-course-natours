@@ -114,3 +114,89 @@ else specified value = initial value
     - neither the developer nor the browser
   4) The 'inherit' keyword forces inheritance on a certain property
   5) The 'initial' keyword resets a property to its initial value
+
+
+##Lecture 19, Section 3
+
+###Website rendering: the visual formatting model
+
+Definition: algorithm that calculate boxes and determines the layout of these boxes 
+for each element in the render tree in order to determine the final layout of the page
+
+Things to consider when applying visual formatting model algorithm
+  - Dimensions of boxes: the box model
+  - Box type: inline, block (flex, list-item, table) and inline-block
+  - Positioning scheme: floats and positioning (relative, absolute)
+  - stacking contexts (?)
+  - Other elements in the render tree (parents, siblings, children)
+  - Viewport size, dimensions of images, etc.
+
+####Dimensions of boxes: The box model
+A box model has:
+  - Content: text, image, etc.
+  - Padding: transparent area around the content, inside of the box
+  - Border: goes around the padding of the content
+  - Margin: space between boxes
+  - Fill area: area that gets filled with **background color** or **background image** (this includes content, padding and border, but not margin)
+
+Use `box-sizing: border-box` to make width and height include padding and border - make life easier
+
+####Box types: Inline, block and inline-block
+1) Block-level boxes
+- 100% of parent's width
+- vertically, one after another (has line break after each)
+- sub-types are *flex*, *list-item* and *table*
+
+2) Inline boxes
+- distributed in lines
+- occupies only content's space
+- no line breaks
+- no height and width
+- only left and right padding and margin
+
+3) Inline-block boxes
+- occupies only content's space
+- no line breaks
+- has height and width
+- has top/bottom padding/margin
+
+####Positioning schemes: Normal flow, absolute positioning and floats
+1) Normal flow
+- default positioning scheme
+- not floated
+- not absolutely positioned
+- elements laid out according to the HTML element order
+```
+/* default */
+position: relative
+```
+
+2) Floats
+- element is removed from the normal flow
+- text and inline elements will wrap around the floated element
+- the container will not adjust its height to the element
+```
+float: left
+float: right
+```
+
+3) Absolute positioning
+- element is removed from the normal flow
+- no impact on surrounding content or elements
+- we use `top`, `bottom`, `left` and `right` to offset the element from its first relative positioned container
+```
+position: absolute
+position: fixed
+```
+
+####Stacking contexts
+With multiple layers (mostly created by z-index), elements can overlap each other
+
+Common misconception: only z-index creates new stacking contexts
+- An opacity value different from 1, a transform, a filter or other properties will also create new context
+
+**QUESTIONS** from this lecture:
+1) Is `position: relative` the default value for all elements' position?
+2) What's Floats? See docs.
+3) Differences between `fixed` and `absolute`?
+4) What's filter property in CSS?
