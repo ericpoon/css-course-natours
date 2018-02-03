@@ -1,0 +1,38 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/*
+browsers are getting better and better
+so now we don't need normalize.css for cross browser reset
+we can just simply use the universal selector to do it
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+body is the parent of all the other elements
+and font properties are usually inherited
+so they will be applied to all child elements
+this is more efficient and better practice, compared to putting all in universal selector
+everything related to font we always specify here
+*/
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+}
+
+.header {
+
+}
