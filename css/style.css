@@ -12,10 +12,15 @@ browsers are getting better and better
 so now we don't need normalize.css for cross browser reset
 we can just simply use the universal selector to do it
 */
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+
+  box-sizing: inherit; /* force all to inherit box-sizing (from body), which by default is not inherited */
+  /* better practice: whenever we can use inheritance, we should use it and avoid universal selector */
+
 }
 
 html {
@@ -45,6 +50,8 @@ body {
   line-height: 1.7;
   color: #777;
   padding: 3rem; /* to make entire body has a white border */
+
+  box-sizing: border-box;
 }
 
 .header {
