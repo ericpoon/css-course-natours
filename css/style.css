@@ -48,7 +48,15 @@ body {
   position: relative; /* if child elements are positioned using 'absolute', this will be the origin */
 }
 
-/* TODO? difference between viewport height and percentage */
+/* difference between viewport height and percentage
+viewport size is the browser window size which includes scrollbar
+while % is the actual element w/h
+also, vw/vh refers to viewport size no matter how nested the element is
+in short,
+for width, % may be better (so don't worry about scrollbar)
+for height, vh may be better (can't make an element 100% height with %)
+reference: https://bitsofco.de/viewport-vs-percentage-units/
+*/
 
 .logo-box {
   position: absolute;
