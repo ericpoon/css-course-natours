@@ -147,6 +147,17 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
   }
 }
 
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* pseudo class - a special state of a selector */
 .btn:link, /* unvisited links */
 .btn:visited /* visited links */
@@ -221,4 +232,9 @@ a:active must come after a:hover to be effective
 .btn:hover::after {
   transform: scale(1.4, 1.6); /* transform from original state, original state is .btn:hover */
   opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom .5s ease-out .75s; /* animation-delay set to be .75s */
+  animation-fill-mode: backwards; /* use the properties defined in 0% to fill before animation starts */
 }
