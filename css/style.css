@@ -75,6 +75,7 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
   top: 40%; /* move it tiny bit upper so we use 40% instead of 50% */
   left: 50%; /* 50% here refers to the parent's height/width */
   transform: translate(-50%, -50%); /* 50% here refers to the h/w of itself */
+  text-align: center; /* center the button (inline-block) */
 }
 
 .heading-primary {
@@ -87,6 +88,8 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
    This removes some shaky side-effects (bugs) of animation.
    */
   backface-visibility: hidden;
+
+  margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -142,4 +145,46 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+/* pseudo class - a special state of a selector */
+.btn:link, /* unvisited links */
+.btn:visited /* visited links */
+{
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+
+  /* inline, block, inline-block
+  - https://stackoverflow.com/questions/9189810/css-display-inline-vs-inline-block
+  - http://dustwell.com/div-span-inline-block.html
+  - https://hacks.mozilla.org/2015/03/understanding-inline-box-model/
+  inline element doesn't respect width or height or top/bottom padding/margin
+  but we set top/bottom padding here so we should use inline-block
+  */
+  display: inline-block; /* treated as if this was text */
+
+  transition: all .2s;
+
+  border-radius: 100px;
+}
+
+.btn:hover {
+  transform: translateY(-3px); /* refer to the initial state (btn:link) */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+}
+
+.btn:active {
+  transform: translateY(-1px); /* refer to the initial state (btn:link) */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+/* according to CSS definition
+a:hover must come after a:link and a:visited to be effective
+a:active must come after a:hover to be effective
+*/
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
 }
