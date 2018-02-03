@@ -18,6 +18,20 @@ we can just simply use the universal selector to do it
   box-sizing: border-box;
 }
 
+html {
+  /* change this to change all other elements' sizes globally */
+  /*font-size: 10px; !* makes life easier, 1rem is now 10px *!*/
+
+  /* However, changing font-size above is not a good practice
+   this overrides browser defined font-size,
+   some people may change browser font-size, e.g. people with bad sight may increase the font size
+   */
+
+  /* better practice, so this doesn't override browser defined one
+  but calculate font size based on it*/
+  font-size: 62.5%; /* 10/16 = 0.625 */
+}
+
 /*
 body is the parent of all the other elements
 and font properties are usually inherited
@@ -28,10 +42,9 @@ everything related to font we always specify here
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-size: 16px;
   line-height: 1.7;
   color: #777;
-  padding: 30px; /* to make entire body has a white border */
+  padding: 3rem; /* to make entire body has a white border */
 }
 
 .header {
@@ -60,14 +73,14 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
 
 .logo-box {
   position: absolute;
-  top: 40px; /* count from the first relative-positioned ancestor */
-  left: 40px;
+  top: 4rem; /* count from the first relative-positioned ancestor */
+  left: 4rem;
 }
 
 .logo {
   /* the width will scale accordingly,
    can also control width and let browser figure out the height as well */
-  height: 35px;
+  height: 3.5rem;
 }
 
 .text-box {
@@ -89,16 +102,16 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
    */
   backface-visibility: hidden;
 
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 }
 
 .heading-primary-main {
   /* span element is by default an inline element */
   /* block elements occupy the entire width available and creates linebreak after and before them */
   display: block;
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 400;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
 
   animation-name: moveInLeft;
   animation-duration: 1s;
@@ -111,9 +124,9 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
 
 .heading-primary-sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 17.4px;
+  letter-spacing: 1.7rem;
 
   animation: moveInRight 1s ease-out;
 }
@@ -121,11 +134,11 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
 @keyframes moveInLeft {
   0% { /* initial state */
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-10rem);
   }
   /* can add multiple intermediate states here */
   70% { /* intermediate state */
-    transform: translateX(5px);
+    transform: translateX(.5rem);
   }
   100% { /* final state */
     opacity: 1;
@@ -136,10 +149,10 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(10rem);
   }
   70% {
-    transform: translateX(-5px);
+    transform: translateX(-.5rem);
   }
   100% {
     opacity: 1;
@@ -150,7 +163,7 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(3rem);
   }
   100% {
     opacity: 1;
@@ -164,7 +177,8 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
 {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 15px 40px;
+  padding: 1.5rem 4rem;
+  font-size: 1.6rem;
 
   /* inline, block, inline-block
   - https://stackoverflow.com/questions/9189810/css-display-inline-vs-inline-block
@@ -177,19 +191,19 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
 
   transition: all .2s;
 
-  border-radius: 100px;
+  border-radius: 10rem;
 
   position: relative; /* as the reference of .btn::after */
 }
 
 .btn:hover {
-  transform: translateY(-3px); /* refer to the initial state (btn:link) */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+  transform: translateY(-.3rem); /* refer to the initial state (btn:link) */
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
 }
 
 .btn:active {
-  transform: translateY(-1px); /* refer to the initial state (btn:link) */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  transform: translateY(-.1rem); /* refer to the initial state (btn:link) */
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
 
 /* according to CSS definition
@@ -208,7 +222,7 @@ a:active must come after a:hover to be effective
   display: inline-block;
   height: 100%; /* pseudo element is treated as the child of the original element */
   width: 100%;
-  border-radius: 100px;
+  border-radius: 10rem;
 
   /* an absolute-positioned element needs a reference,
   which is the first relative-positioned element it can find*/
