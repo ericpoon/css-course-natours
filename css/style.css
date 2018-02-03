@@ -285,3 +285,56 @@ Step 1 is also referred as the cascade:
     - When using 3rd party stylesheets, always put the author stylesheets last,
       so what the developer writes won't be overridden
 */
+
+/*
+Lecture 16, Section 3
+
+Step 2 of parsing CSS - process final CSS values
+
+Note that all units (%, vh, vw, etc.) are ultimately converted into px in this step
+
+How CSS values are processed:
+  There are 6 types of values, during the process:
+  1) Declared value
+    - author declarations
+  2) Cascaded value
+    - after cascade (resolving conflicts)
+  3) Specified value
+    - giving a default/initial value, if there is not cascaded value
+    - inheritance plays a role here
+  4) Computed value
+    - converting relative values to absolute (converting units into px)
+  5) Used value
+    - final calculations, based on layout
+    - this happens later in rendering phase
+  6) Actual value
+    - due to browser and device restrictions, floating point may be rounded
+
+How units are converted from relative to absolute (px)
+  There are two types of percentage:
+  1) percentage for fonts:    x% * parent's computed *font-size*
+  2) percentage for lengths:  x% * parent's computed *width*
+
+  There are also three types of *font-based units*:
+  1) em for fonts:            x * parent's computed font-size
+  2) em for lengths:          x * current element's computed font-size
+  3) rem:                     x * root's computed font-size
+     (calculation way of rem is the same for fonts and lengths)
+  - font-based units give us flexibility, we only need to change font size to change all elements' sizes,
+    this is a great technique for responsive layout
+
+  Two more viewport-based units
+  1) vw:                      x% of the viewport width
+  1) vh:                      x% of the viewport height
+
+Summary
+  - each property has an initial value, used if nothing is declared and no inheritance
+  - browsers specify a root font-size for each page (usually 16px)
+  - % and relative values are always converted to px
+    - % - relative to parent's font-size, for font-size
+    - % - relative to parent's width, for lengths
+    - em - relative to parent's font-size, for font-size
+    - em - relative to current font-size, for lengths
+    - rem - relative to root's font-size, for both font-size and lengths
+    - vw, vh - percentage measurements of viewport's view and height
+*/
