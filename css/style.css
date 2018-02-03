@@ -240,3 +240,48 @@ a:active must come after a:hover to be effective
   animation: moveInBottom .5s ease-out .75s; /* animation-delay set to be .75s */
   animation-fill-mode: backwards; /* use the properties defined in 0% to fill before animation starts */
 }
+
+/*
+Lecture 14, Section 3
+
+a CSS rule contains a 'selector' and a 'declaration block',
+in a declaration block there are 'declarations',
+and each declaration has 'property' and 'declared value'
+
+CSS parsing includes 2 steps:
+  1. resolve conflicting CSS declaration
+  2. process final CSS values
+
+Step 1 is also referred as the cascade:
+  Process of combining different stylesheets and resolving conflicts in 3 sources
+  - author declarations (written by developers)
+  - user declarations (due to user interaction/behaviour)
+  - user agent declarations (default browser declarations)
+
+
+  Priority: importance > specificity > source order
+  - The cascade starts by giving each conflicting declaration an *importance*
+    importance level:
+      - user !important declarations
+      - author !important declarations
+      - auth declarations
+      - user declarations
+      - user agent declarations
+  - If same importance, then it compares *specificity*
+    specificity level (according to the selector):
+      - inline styles
+      - IDs
+      - classes, pseudo-classes, attributes
+      - elements, pseudo-elements
+    Note: see 9:01 in lecture 14 for how it counts specificity
+  - If same specificity, then it compares *source order*
+    use the last declaration to override all previous declarations
+
+  Note:
+    - Only use !important as a last resource,
+      it's always better to use correct specificities for more maintainable code
+    - Universal selector * has no specificity value, it's (0, 0, 0, 0)
+    - Rely more on specificity
+    - When using 3rd party stylesheets, always put the author stylesheets last,
+      so what the developer writes won't be overridden
+*/
