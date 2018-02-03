@@ -167,6 +167,8 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
   transition: all .2s;
 
   border-radius: 100px;
+
+  position: relative; /* as the reference of .btn::after */
 }
 
 .btn:hover {
@@ -187,4 +189,36 @@ a:active must come after a:hover to be effective
 .btn-white {
   background-color: #fff;
   color: #777;
+}
+
+/* pseudo element - a virtual element */
+.btn::after {
+  content: ""; /* without this it doesn't show anything */
+  display: inline-block;
+  height: 100%; /* pseudo element is treated as the child of the original element */
+  width: 100%;
+  border-radius: 100px;
+
+  /* an absolute-positioned element needs a reference,
+  which is the first relative-positioned element it can find*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+.btn-white::after {
+  /* this itself doesn't show up as it doesn't have content property,
+  but as <a> has both .btn and .btn-white,
+  and an element can have only one ::after element,
+  so the properties of .btn::after and .btn-white::after will
+  be merged and applied to a single ::after element of <a>
+  */
+  background-color: white;
+}
+
+.btn:hover::after {
+  transform: scale(1.4, 1.6); /* transform from original state, original state is .btn:hover */
+  opacity: 0;
 }
