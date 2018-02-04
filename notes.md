@@ -200,3 +200,35 @@ Common misconception: only z-index creates new stacking contexts
 2) What's Floats? See docs.
 3) Differences between `fixed` and `absolute`?
 4) What's filter property in CSS?
+
+
+##Lecture 20, Section 3
+
+Think -> Build -> Architect
+
+###Think: Component-driven design
+- Components are re-usable across a project, and between different projects
+- Components are independent, allowing us to use them anywhere
+- See also Atomic Design - components are analog to organisms
+
+###Build: Block Element Modifier (BEM)
+- Block: standalone, meaningful on its own
+- Element: part of a block, has no standalone meaning
+- Modifier: a different version of a block or an element
+
+Note: naming convention is `.block__element--modifier {}`
+
+####Benefits
+1) never nested - always use a single class name
+2) very low-specificity selectors
+3) easy to maintain
+
+###Architect: 7-1 Pattern
+7 different folders for partial Sass files, and 1 main Sass file to import all other files into a compiled CSS stylesheet
+1) base/
+2) components/
+3) layout/
+4) pages/
+5) themes/
+6) abstracts/
+7) vendors/
