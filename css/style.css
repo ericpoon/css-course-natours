@@ -78,19 +78,19 @@ for height, vh may be better (can't make an element 100% height with %)
 reference: https://bitsofco.de/viewport-vs-percentage-units/
 */
 
-.logo-box {
+.header__logo-box {
   position: absolute;
   top: 4rem; /* count from the first relative-positioned ancestor */
   left: 4rem;
 }
 
-.logo {
+.header__logo {
   /* the width will scale accordingly,
    can also control width and let browser figure out the height as well */
   height: 3.5rem;
 }
 
-.text-box {
+.header__text-box {
   position: absolute;
   top: 40%; /* move it tiny bit upper so we use 40% instead of 50% */
   left: 50%; /* 50% here refers to the parent's height/width */
@@ -112,7 +112,7 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
   margin-bottom: 6rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
   /* span element is by default an inline element */
   /* block elements occupy the entire width available and creates linebreak after and before them */
   display: block;
@@ -129,7 +129,7 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
   */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
@@ -218,7 +218,7 @@ a:hover must come after a:link and a:visited to be effective
 a:active must come after a:hover to be effective
 */
 
-.btn-white {
+.btn--white {
   background-color: #fff;
   color: #777;
 }
@@ -240,7 +240,7 @@ a:active must come after a:hover to be effective
   transition: all .4s;
 }
 
-.btn-white::after {
+.btn--white::after {
   /* this itself doesn't show up as it doesn't have content property,
   but as <a> has both .btn and .btn-white,
   and an element can have only one ::after element,
@@ -257,7 +257,7 @@ a:active must come after a:hover to be effective
   opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
   animation: moveInBottom .5s ease-out .75s; /* animation-delay set to be .75s */
   animation-fill-mode: backwards; /* use the properties defined in 0% to fill before animation starts */
 }
