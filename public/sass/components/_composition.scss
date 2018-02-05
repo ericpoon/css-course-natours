@@ -1,0 +1,45 @@
+.composition {
+  position: relative;
+
+  &__photo {
+    width: 55%; // always define width in percentage if possible (so as to scale with view port)
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+    border-radius: 3px;
+    position: absolute;
+    transition: all .2s;
+
+    z-index: 10;
+
+    &--p1 {
+      left: 0;
+      top: -2rem;
+    }
+
+    &--p2 {
+      right: 0;
+      top: 2rem;
+    }
+
+    &--p3 {
+      left: 20%;
+      top: 10rem;
+    }
+
+    &:hover {
+      outline: .3rem solid $color-primary;
+      outline-offset: 1rem;
+      transform: scale(1.05);
+      box-shadow: 0 2rem 4rem rgba($color-black, .5);
+
+      /* this will always be higher than others (others are set to 10 above),
+      10 and 20 are just magic numbers */
+      z-index: 20;
+    }
+  }
+
+  /* when an element is hovered, select other elements that are NOT hovered */
+  &:hover &__photo:not(:hover) {
+    transform: scale(.95);
+    opacity: .5;
+  }
+}

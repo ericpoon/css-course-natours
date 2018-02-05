@@ -2,5 +2,26 @@
 .section-about {
   background-color: $color-grey-light-1;
   padding: 25rem 0;
+  /* negative margin values are allowed by W3C, it's not a hack;
+  margin means the space between two elements,
+  so negative margin values lead to overlap */
   margin-top: -20vh;
+}
+
+.section-features {
+  padding: 20rem 0;
+  background-image: linear-gradient(
+          to right bottom,
+          rgba($color-primary-light, .8),
+          rgba($color-primary-dark, .8)
+  ), url(../img/nat-4.jpg);
+  background-size: cover;
+  background-position: bottom;
+
+  // skewing design
+  transform: skewY(-7deg);
+  & > * {
+    transform: skewY(7deg);
+  }
+  margin-top: -12vh; // move it up to hide the white space
 }
