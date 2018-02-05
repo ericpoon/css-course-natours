@@ -1,6 +1,5 @@
 .row {
   max-width: $grid-width; // if available width less than max-width, it'll just fill 100% of the width
-  background-color: #eee;
 
   /* browser will automatically figure out the margin defined as auto,
      and here, left and right margins would be the same */
@@ -17,7 +16,6 @@
   [class^="col-"] { // DRY principle, put common declarations for columns here
     float: left; // float-based layout
 
-    background-color: orangered;
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
     }

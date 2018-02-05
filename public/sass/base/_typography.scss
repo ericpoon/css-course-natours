@@ -47,3 +47,26 @@ body {
     animation: moveInRight 1s ease-out;
   }
 }
+
+/* we want this to be reusable in different places,
+so we can't set a padding-bottom/margin-bottom here */
+
+.heading-secondary {
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  letter-spacing: .2rem; // 2px is small, doesn't really scale, can use 2px or .2rem here
+
+  /* clip the text on the background, text acts like a mask */
+  -webkit-background-clip: text; // not finalized in chrome, so -webkit- is required for chrome
+  color: transparent; // hide the text and shows the clipped background
+
+  transition: all .2s;
+
+  &:hover {
+    transform: skewX(-15deg) scale(1.1);
+    text-shadow: 2rem .5rem 2rem rgba($color-black, .2);
+  }
+}

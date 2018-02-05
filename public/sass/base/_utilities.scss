@@ -1,0 +1,12 @@
+.u-center-text {
+  text-align: center;
+}
+/*
+Note that if the child is set to be inline-block, then the child will be treated as if it's text,
+so theoretically this doesn't only center text, but also all inline-blocks
+*/
+
+/* want components to be re-usable, so margin-bottom is not set directly on the components themselves */
+.u-margin-bottom-8 {
+  margin-bottom: 8rem;
+}
