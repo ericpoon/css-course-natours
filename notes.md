@@ -346,3 +346,32 @@ div {
   margin: devide(60, 2) * 1px;
 }
 ```
+
+
+##Lecture 33, Section 5
+
+###Basic responsive design principles
+1) Fluid grids and layouts
+    - To allow content to easily adapt to the current viewport width used to browse the website.
+    Use % rather than px for all layout-related lengths.
+2) Flexible/responsive images
+    - Images behave differently than text content, and so we need to ensure that they
+    also adapt nicely to current viewport
+3) Media queries
+    - To change styles on certain viewport widths (breakpoints), allowing us to create
+    different version of our website for different widths.
+
+###Layout Typesgs
+1) Float layouts
+2) Flexbox
+3) CSS Grid
+
+Flexbox and CSS grid are more modern, but not supported by all browsers,
+the instructor of the course still use float layouts in *production* as of 2017.
+
+Flexbox is great for one-dimensional direction (column or row),
+while CSS grid is great for two-dimensional grid.
+
+Note: In this course, float layout will be used in 1st project Natours, and then 2nd one will use flexbox and 3rd one will use CSS grid.
+And this is how CSS is moving right now, from float layout to flexbox and to CSS grid.
+
