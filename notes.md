@@ -232,3 +232,117 @@ Note: naming convention is `.block__element--modifier {}`
 5) themes/
 6) abstracts/
 7) vendors/
+
+
+##Lecture 25, Section 4
+
+Mixins, extensions and functions in Sass
+
+###Mixins
+Example:
+```scss
+@mixin style-link-text($color) {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $color;
+}
+
+li {
+  a:link {
+    @include style-link-text(grey); 
+  }
+}
+```
+
+###Extensions
+Example:
+- SCSS before compiling
+```scss
+.icon { // if icon is never used, can use placeholder (%icon) to simplify CSS file
+  transition: background-color ease .2s;
+  margin: 0 .5em;
+}
+
+.error-icon {
+  @extend .icon; // or @icon, for placeholder
+  /* error specific styles... */
+}
+
+.info-icon {
+  @extend .icon; // or @icon, for placeholder
+  /* info specific styles... */
+}
+```
+- After compiling to CSS
+```css
+.icon, .error-icon, .info-icon {
+  transition: background-color ease .2s;
+  margin: 0 .5em;
+}
+
+.error-icon {
+  /* error specific styles... */
+}
+
+.info-icon {
+  /* info specific styles... */
+}
+```
+
+####Comparison between **mixins** and **extensions**
+From rendering perspective, mostly they have the same result. 
+However, **extensions** modify/copy the selector the achieve this, 
+while **mixins** insert/copy the defined properties into the declaration block.
+In short, **@extend** copies modifiers while **@include** copies declared properties.
+
+Here's the result of the above example using a mixin (an incorrect usage):
+```scss
+@mixin icon {
+  transition: background-color ease .2s;
+  margin: 0 .5em;
+}
+
+.error-icon {
+  @include icon;
+  /* error specific styles... */
+}
+
+.info-icon {
+  @include icon;
+  /* info specific styles... */
+}
+```
+- After compiling to CSS
+```css
+.error-icon {
+  transition: background-color ease .2s;
+  margin: 0 .5em;
+  /* error specific styles... */
+}
+
+.info-icon {
+  transition: background-color ease .2s;
+  margin: 0 .5em;
+  /* info specific styles... */
+}
+```
+Note that this affects the performance of CSS 
+
+More information [here](http://thesassway.com/intermediate/understanding-placeholder-selectors)
+
+###Functions
+Sass built-in functions are powerful
+```scss
+// Sass functions
+div {
+  color: lighten(red, 10%);
+  background-color: darken(blue, 20%);
+}
+// self-defined function (not very useful)
+@function devide($a, $b) {
+  @return $a / $b; // note that the returned value has no unit
+}
+div {
+  margin: devide(60, 2) * 1px;
+}
+```
