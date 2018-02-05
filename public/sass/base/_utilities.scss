@@ -7,6 +7,14 @@ so theoretically this doesn't only center text, but also all inline-blocks
 */
 
 /* want components to be re-usable, so margin-bottom is not set directly on the components themselves */
-.u-margin-bottom-8 {
+.u-margin-bottom-big {
   margin-bottom: 8rem;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem;
+}
+
+.u-margin-bottom-small {
+  margin-bottom: 1rem;
 }

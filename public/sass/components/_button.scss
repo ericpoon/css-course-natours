@@ -6,7 +6,7 @@
     text-transform: uppercase;
     text-decoration: none;
     padding: 1.5rem 4rem;
-    font-size: 1.6rem;
+    font-size: $font-size-default;
 
     /* inline, block, inline-block
     - https://stackoverflow.com/questions/9189810/css-display-inline-vs-inline-block
@@ -91,4 +91,29 @@
   }
 
   /* TODO? https://www.udemy.com/advanced-css-and-sass/learn/v4/questions/3162218 */
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $font-size-default;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    /* we use px here because we don't want it scales,
+    we want border always to be 1px */
+    border-bottom: 1px solid $color-primary;
+    padding: .3rem;
+    transition: all .2s;
+  }
+
+  &:hover {
+    color: $color-white;
+    background-color: $color-primary;
+    box-shadow: 0 1rem 3rem rgba($color-black, .15);
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
 }

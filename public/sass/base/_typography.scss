@@ -50,7 +50,6 @@ body {
 
 /* we want this to be reusable in different places,
 so we can't set a padding-bottom/margin-bottom here */
-
 .heading-secondary {
   font-size: 3.2rem;
   text-transform: uppercase;
@@ -68,5 +67,21 @@ so we can't set a padding-bottom/margin-bottom here */
   &:hover {
     transform: skewX(-15deg) scale(1.1);
     text-shadow: 2rem .5rem 2rem rgba($color-black, .2);
+  }
+}
+
+.heading-tertiary {
+  font-size: $font-size-default;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $font-size-default;
+  &:not(:last-child) {
+    /* we usually want margin-bottom after a paragraph,
+    so we should make margin-bottom as a part of the paragraph component,
+    instead of using a utility class to add bottom margin*/
+    margin-bottom: 3rem;
   }
 }
