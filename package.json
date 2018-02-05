@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile:sass":  "node-sass sass/main.scss css/style.css -w"
+    "start": "live-server .",
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/ericpoon/css-course-natours#readme",
   "devDependencies": {
+    "live-server": "^1.2.0",
     "node-sass": "^4.7.2"
   }
 }
