@@ -1,0 +1,49 @@
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: $color-grey-dark;
+}
+
+/* .heading-primary is more related to typography,
+   but it's arguable that this could be a component as well. */
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+
+  /* Determines whether or not the 'back' side of a transformed
+   element is visible. With an identity transform, the 'front' side
+   of an element faces the viewer.
+   This removes some shaky side-effects (bugs) of animation.
+   */
+  backface-visibility: hidden;
+
+  margin-bottom: 6rem;
+
+  // use nesting
+  &--main {
+    /* span element is by default an inline element */
+    /* block elements occupy the entire width available and creates linebreak after and before them */
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /*
+    animation-delay: 2s;
+    animation-iteration-count: 3;
+    */
+  }
+
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.7rem;
+
+    animation: moveInRight 1s ease-out;
+  }
+}

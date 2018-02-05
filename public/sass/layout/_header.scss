@@ -1,0 +1,46 @@
+/* This is a layout showing on every page, so we consider this a layout instead of a component,
+   but it's arguable that this should be a component as well
+ */
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+          to right bottom,
+          rgba($color-primary-light, 0.8),
+          rgba($color-primary-dark, 0.8)
+  ), url(../img/hero.jpg);
+  background-size: cover; /* cover means always try to fit */
+  background-position: top; /* the fixed edge of the image */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* can use online css clip-path maker */
+
+  position: relative; /* if child elements are positioned using 'absolute', this will be the origin */
+
+  // use nesting
+  &__logo-box {
+    position: absolute;
+    top: 4rem; /* count from the first relative-positioned ancestor */
+    left: 4rem;
+  }
+  &__logo {
+    /* the width will scale accordingly,
+    can also control width and let browser figure out the height as well */
+    height: 3.5rem;
+  }
+  &__text-box {
+    position: absolute;
+    top: 40%; /* move it tiny bit upper so we use 40% instead of 50% */
+    left: 50%; /* 50% here refers to the parent's height/width */
+    transform: translate(-50%, -50%); /* 50% here refers to the h/w of itself */
+    text-align: center; /* center the button (inline-block) */
+  }
+}
+
+/* difference between viewport height and percentage
+viewport size is the browser window size which includes scrollbar
+while % is the actual element w/h
+also, vw/vh refers to viewport size no matter how nested the element is
+in short,
+for width, % may be better (so don't worry about scrollbar)
+for height, vh may be better (can't make an element 100% height with %)
+reference: https://bitsofco.de/viewport-vs-percentage-units/
+*/

@@ -1,0 +1,94 @@
+.btn {
+  /* pseudo class - a special state of a selector */
+  &:link, /* unvisited links */
+  &:visited /* visited links */
+  {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    font-size: 1.6rem;
+
+    /* inline, block, inline-block
+    - https://stackoverflow.com/questions/9189810/css-display-inline-vs-inline-block
+    - http://dustwell.com/div-span-inline-block.html
+    - https://hacks.mozilla.org/2015/03/understanding-inline-box-model/
+    inline element doesn't respect width or height or top/bottom padding/margin
+    but we set top/bottom padding here so we should use inline-block
+    */
+    display: inline-block; /* treated as if this was text */
+
+    transition: all .2s;
+
+    border-radius: 10rem;
+
+    position: relative; /* as the reference of .btn::after */
+  }
+
+  &:hover {
+    transform: translateY(-.3rem); /* refer to the initial state (btn:link) */
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+    &::after {
+      /* transform from original state, original state is the state of .btn::after,
+      as there's always only one ::after element */
+      /*
+      There are two elements, one actual one virtual, and in .btn:hover block,
+      we define the new (transformed) properties under the *hover condition*,
+      and under this condition, we change two elements, one is the actual one (see transform and box-shadow above),
+      the other is the virtual one (::after) (see transform and opacity below).
+      */
+      transform: scale(1.4, 1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-.1rem); /* refer to the initial state (btn:link) */
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
+
+  /* according to CSS definition
+  a:hover must come after a:link and a:visited to be effective
+  a:active must come after a:hover to be effective
+  */
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      /* this itself doesn't show up as it doesn't have content property,
+      but as <a> has both .btn and .btn-white,
+      and an element can have only one ::after element,
+      so the properties of .btn::after and .btn-white::after will
+      be merged and applied to a single ::after element of <a>
+      */
+      background-color: white;
+    }
+
+  }
+
+  &--animated {
+    animation: moveInBottom .5s ease-out .75s; /* animation-delay set to be .75s */
+    animation-fill-mode: backwards; /* use the properties defined in 0% to fill before animation starts */
+  }
+
+  /* pseudo element - a virtual element */
+  &::after { // initial state of the ::after defined here
+    content: ""; /* without this it doesn't show anything */
+    display: inline-block;
+    height: 100%; /* pseudo element is treated as the child of the original element */
+    width: 100%;
+    border-radius: 10rem;
+
+    /* an absolute-positioned element needs a reference,
+    which is the first relative-positioned element it can find*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
+
+  /* TODO? https://www.udemy.com/advanced-css-and-sass/learn/v4/questions/3162218 */
+}

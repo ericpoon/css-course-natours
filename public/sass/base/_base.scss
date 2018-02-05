@@ -1,0 +1,45 @@
+/*
+browsers are getting better and better
+so now we don't need normalize.css for cross browser reset
+we can just simply use the universal selector to do it
+*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: inherit; /* force all to inherit box-sizing (from body), which by default is not inherited */
+  /* better practice: whenever we can use inheritance, we should use it and avoid universal selector */
+
+}
+
+html {
+  /* change this to change all other elements' sizes globally */
+  /*font-size: 10px; !* makes life easier, 1rem is now 10px *!*/
+
+  /* However, changing font-size above is not a good practice
+   this overrides browser defined font-size,
+   some people may change browser font-size, e.g. people with bad sight may increase the font size
+   */
+
+  /* better practice, so this doesn't override browser defined one
+  but calculate font size based on it*/
+  font-size: 62.5%; /* 10/16 = 0.625 */
+
+  /* font-size here acts more like an over setting for how we size the entire page,
+  so this should not be in _typography.scss, but is a base definition (defines what 1rem is) */
+}
+
+/*
+body is the parent of all the other elements
+and font properties are usually inherited
+so they will be applied to all child elements
+this is more efficient and better practice, compared to putting all in universal selector
+everything related to font we always specify here
+*/
+body {
+  padding: 3rem; /* to make entire body has a white border */
+
+  box-sizing: border-box;
+}

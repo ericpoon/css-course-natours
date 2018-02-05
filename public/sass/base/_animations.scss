@@ -1,0 +1,39 @@
+@keyframes moveInLeft {
+  0% { /* initial state */
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  /* can add multiple intermediate states here */
+  70% { /* intermediate state */
+    transform: translateX(.5rem);
+  }
+  100% { /* final state */
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  70% {
+    transform: translateX(-.5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
