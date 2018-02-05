@@ -3,6 +3,7 @@ $color-primary-light: #7ed56f;
 $color-primary-dark: #28b485;
 $color-grey-dark: #777;
 $color-white: #fff;
+$color-black: #000;
 
 /*
 browsers are getting better and better
@@ -63,6 +64,25 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* can use online css clip-path maker */
 
   position: relative; /* if child elements are positioned using 'absolute', this will be the origin */
+
+  // use nesting
+  &__logo-box {
+    position: absolute;
+    top: 4rem; /* count from the first relative-positioned ancestor */
+    left: 4rem;
+  }
+  &__logo {
+    /* the width will scale accordingly,
+    can also control width and let browser figure out the height as well */
+    height: 3.5rem;
+  }
+  &__text-box {
+    position: absolute;
+    top: 40%; /* move it tiny bit upper so we use 40% instead of 50% */
+    left: 50%; /* 50% here refers to the parent's height/width */
+    transform: translate(-50%, -50%); /* 50% here refers to the h/w of itself */
+    text-align: center; /* center the button (inline-block) */
+  }
 }
 
 /* difference between viewport height and percentage
@@ -74,26 +94,6 @@ for width, % may be better (so don't worry about scrollbar)
 for height, vh may be better (can't make an element 100% height with %)
 reference: https://bitsofco.de/viewport-vs-percentage-units/
 */
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem; /* count from the first relative-positioned ancestor */
-  left: 4rem;
-}
-
-.header__logo {
-  /* the width will scale accordingly,
-   can also control width and let browser figure out the height as well */
-  height: 3.5rem;
-}
-
-.header__text-box {
-  position: absolute;
-  top: 40%; /* move it tiny bit upper so we use 40% instead of 50% */
-  left: 50%; /* 50% here refers to the parent's height/width */
-  transform: translate(-50%, -50%); /* 50% here refers to the h/w of itself */
-  text-align: center; /* center the button (inline-block) */
-}
 
 .heading-primary {
   color: $color-white;
@@ -107,32 +107,33 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
   backface-visibility: hidden;
 
   margin-bottom: 6rem;
-}
 
-.heading-primary--main {
-  /* span element is by default an inline element */
-  /* block elements occupy the entire width available and creates linebreak after and before them */
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
+  // use nesting
+  &--main {
+    /* span element is by default an inline element */
+    /* block elements occupy the entire width available and creates linebreak after and before them */
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
 
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  /*
-  animation-delay: 2s;
-  animation-iteration-count: 3;
-  */
-}
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /*
+    animation-delay: 2s;
+    animation-iteration-count: 3;
+    */
+  }
 
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.7rem;
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.7rem;
 
-  animation: moveInRight 1s ease-out;
+    animation: moveInRight 1s ease-out;
+  }
 }
 
 @keyframes moveInLeft {
@@ -175,86 +176,97 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
   }
 }
 
-/* pseudo class - a special state of a selector */
-.btn:link, /* unvisited links */
-.btn:visited /* visited links */
-{
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  font-size: 1.6rem;
+.btn {
+  /* pseudo class - a special state of a selector */
+  &:link, /* unvisited links */
+  &:visited /* visited links */
+  {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    font-size: 1.6rem;
 
-  /* inline, block, inline-block
-  - https://stackoverflow.com/questions/9189810/css-display-inline-vs-inline-block
-  - http://dustwell.com/div-span-inline-block.html
-  - https://hacks.mozilla.org/2015/03/understanding-inline-box-model/
-  inline element doesn't respect width or height or top/bottom padding/margin
-  but we set top/bottom padding here so we should use inline-block
+    /* inline, block, inline-block
+    - https://stackoverflow.com/questions/9189810/css-display-inline-vs-inline-block
+    - http://dustwell.com/div-span-inline-block.html
+    - https://hacks.mozilla.org/2015/03/understanding-inline-box-model/
+    inline element doesn't respect width or height or top/bottom padding/margin
+    but we set top/bottom padding here so we should use inline-block
+    */
+    display: inline-block; /* treated as if this was text */
+
+    transition: all .2s;
+
+    border-radius: 10rem;
+
+    position: relative; /* as the reference of .btn::after */
+  }
+
+  &:hover {
+    transform: translateY(-.3rem); /* refer to the initial state (btn:link) */
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+    &::after {
+      /* transform from original state, original state is the state of .btn::after,
+      as there's always only one ::after element */
+      /*
+      There are two elements, one actual one virtual, and in .btn:hover block,
+      we define the new (transformed) properties under the *hover condition*,
+      and under this condition, we change two elements, one is the actual one (see transform and box-shadow above),
+      the other is the virtual one (::after) (see transform and opacity below).
+      */
+      transform: scale(1.4, 1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(-.1rem); /* refer to the initial state (btn:link) */
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
+
+  /* according to CSS definition
+  a:hover must come after a:link and a:visited to be effective
+  a:active must come after a:hover to be effective
   */
-  display: inline-block; /* treated as if this was text */
 
-  transition: all .2s;
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
 
-  border-radius: 10rem;
+    &::after {
+      /* this itself doesn't show up as it doesn't have content property,
+      but as <a> has both .btn and .btn-white,
+      and an element can have only one ::after element,
+      so the properties of .btn::after and .btn-white::after will
+      be merged and applied to a single ::after element of <a>
+      */
+      background-color: white;
+    }
 
-  position: relative; /* as the reference of .btn::after */
-}
+  }
 
-.btn:hover {
-  transform: translateY(-.3rem); /* refer to the initial state (btn:link) */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
-}
+  &--animated {
+    animation: moveInBottom .5s ease-out .75s; /* animation-delay set to be .75s */
+    animation-fill-mode: backwards; /* use the properties defined in 0% to fill before animation starts */
+  }
 
-.btn:active {
-  transform: translateY(-.1rem); /* refer to the initial state (btn:link) */
-  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-}
+  /* pseudo element - a virtual element */
+  &::after { // initial state of the ::after defined here
+    content: ""; /* without this it doesn't show anything */
+    display: inline-block;
+    height: 100%; /* pseudo element is treated as the child of the original element */
+    width: 100%;
+    border-radius: 10rem;
 
-/* according to CSS definition
-a:hover must come after a:link and a:visited to be effective
-a:active must come after a:hover to be effective
-*/
+    /* an absolute-positioned element needs a reference,
+    which is the first relative-positioned element it can find*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
 
-.btn--white {
-  background-color: $color-white;
-  color: $color-grey-dark;
-}
-
-/* pseudo element - a virtual element */
-.btn::after {
-  content: ""; /* without this it doesn't show anything */
-  display: inline-block;
-  height: 100%; /* pseudo element is treated as the child of the original element */
-  width: 100%;
-  border-radius: 10rem;
-
-  /* an absolute-positioned element needs a reference,
-  which is the first relative-positioned element it can find*/
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all .4s;
-}
-
-.btn--white::after {
-  /* this itself doesn't show up as it doesn't have content property,
-  but as <a> has both .btn and .btn-white,
-  and an element can have only one ::after element,
-  so the properties of .btn::after and .btn-white::after will
-  be merged and applied to a single ::after element of <a>
-  */
-  background-color: white;
-}
-
-/* TODO? https://www.udemy.com/advanced-css-and-sass/learn/v4/questions/3162218 */
-
-.btn:hover::after {
-  transform: scale(1.4, 1.6); /* transform from original state, original state is .btn:hover */
-  opacity: 0;
-}
-
-.btn--animated {
-  animation: moveInBottom .5s ease-out .75s; /* animation-delay set to be .75s */
-  animation-fill-mode: backwards; /* use the properties defined in 0% to fill before animation starts */
+  /* TODO? https://www.udemy.com/advanced-css-and-sass/learn/v4/questions/3162218 */
 }
