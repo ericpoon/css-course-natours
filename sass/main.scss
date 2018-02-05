@@ -1,11 +1,8 @@
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+$color-grey-dark: #777;
+$color-white: #fff;
 
 /*
 browsers are getting better and better
@@ -48,7 +45,7 @@ body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  color: #777;
+  color: $color-grey-dark;
   padding: 3rem; /* to make entire body has a white border */
 
   box-sizing: border-box;
@@ -57,9 +54,9 @@ body {
 .header {
   height: 95vh;
   background-image: linear-gradient(
-      to right bottom,
-      rgba(126, 213, 111, 0.8),
-      rgba(40, 180, 131, 0.8)
+          to right bottom,
+          rgba($color-primary-light, 0.8),
+          rgba($color-primary-dark, 0.8)
   ), url(../img/hero.jpg);
   background-size: cover; /* cover means always try to fit */
   background-position: top; /* the fixed edge of the image */
@@ -99,7 +96,7 @@ reference: https://bitsofco.de/viewport-vs-percentage-units/
 }
 
 .heading-primary {
-  color: #fff;
+  color: $color-white;
   text-transform: uppercase;
 
   /* Determines whether or not the 'back' side of a transformed
@@ -219,8 +216,8 @@ a:active must come after a:hover to be effective
 */
 
 .btn--white {
-  background-color: #fff;
-  color: #777;
+  background-color: $color-white;
+  color: $color-grey-dark;
 }
 
 /* pseudo element - a virtual element */
