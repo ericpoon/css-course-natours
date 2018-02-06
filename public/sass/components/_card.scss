@@ -55,7 +55,15 @@
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 
-    &--1 { // can only blend two images with background image, so we don't use <img> element here
+    &--primary { // can only blend two images with background image, so we don't use <img> element here
+      background-image: linear-gradient(
+              to right bottom,
+              $color-primary-light,
+              $color-primary-dark),
+      url(../img/nat-6.jpg);
+    }
+
+    &--secondary {
       background-image: linear-gradient(
               to right bottom,
               $color-secondary-light,
@@ -63,12 +71,12 @@
       url(../img/nat-5.jpg);
     }
 
-    &--2 {
-      background-image: url(../img/nat-6.jpg);
-    }
-
-    &--3 {
-      background-image: url(../img/nat-7.jpg);
+    &--tertiary {
+      background-image: linear-gradient(
+              to right bottom,
+              $color-tertiary-light,
+              $color-tertiary-dark),
+      url(../img/nat-7.jpg);
     }
   }
 
@@ -94,11 +102,27 @@
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone; // 'clone': applies all the properties defined for the elements to each and every box
 
+    &--primary {
+      background-image: linear-gradient(
+              to right bottom,
+              rgba($color-primary-light, .85),
+              rgba($color-primary-dark, .85)
+      );
+    }
+
     &--secondary {
       background-image: linear-gradient(
               to right bottom,
               rgba($color-secondary-light, .85),
               rgba($color-secondary-dark, .85)
+      );
+    }
+
+    &--tertiary {
+      background-image: linear-gradient(
+              to right bottom,
+              rgba($color-tertiary-light, .85),
+              rgba($color-tertiary-dark, .85)
       );
     }
   }
