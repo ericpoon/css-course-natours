@@ -11,6 +11,7 @@
   ), url(../img/hero.jpg);
   background-size: cover; /* cover means always try to fit */
   background-position: top; /* the fixed edge of the image */
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* can use online css clip-path maker */
 
   position: relative; /* if child elements are positioned using 'absolute', this will be the origin */

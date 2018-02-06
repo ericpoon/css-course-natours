@@ -1,5 +1,5 @@
 .card {
-  -moz-perspective: 150rem; // for firefox (this is a new property)
+  -moz-perspective: 100rem; // for firefox (this is a new property)
   perspective: 100rem;
   position: relative;
   /* the *parent will collapse* if children are absolutely positioning,
