@@ -1,0 +1,20 @@
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: .15;
+  overflow: hidden;
+
+  &__content {
+    height: 100%;
+    width: 100%;
+
+    /* similar to background-size: cover (which works for background images),
+       but this works for HTML elements (makes child elements fit the parent element)
+       such as HTML video elements (works for <img> as well) */
+    object-fit: cover;
+  }
+}
