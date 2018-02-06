@@ -1,0 +1,46 @@
+.story {
+  width: 75%;
+  margin: 0 auto; // center a block elem inside a block elem
+  box-shadow: 0 3rem 6rem rgba($color-black, .1);
+  background-color: $color-white;
+  border-radius: .3rem;
+  padding: 6rem;
+  padding-left: 9rem;
+  /* let the paragraph inherits this,
+  but the heading will not as we have specified font-size for the heading */
+  font-size: $font-size-default;
+
+  transform: skewX(-12deg);
+
+  /* this doesn't work as expected, as there's another transform property in &__shape,
+     one of the two transform properties will override the other,
+     so we have to do this separately
+  & > * {
+    transform: skewX(12deg);
+  }
+  */
+
+  &__shape-box {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+
+    // make the shape a circle (it doesn't display like a circle though)
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%); // to use this, the element must be floated and have defined width and height
+
+    // make it display as a circle
+    clip-path: circle(50% at 50% 50%);
+
+    transform: translateX(-3rem) skewX(12deg);
+  }
+
+  &__text-box {
+    transform: skewX(12deg);
+  }
+
+  &__image {
+    height: 100%; // as this image has width > height, so we set height: 100% here
+  }
+
+}
