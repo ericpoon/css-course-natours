@@ -46,7 +46,7 @@
 
   &__image {
     height: 100%; // as this image has width > height, so we set height: 100% here
-    transform: translateX(calc(-50% + 7.5rem)) scale(1.3); // center the image
+    transform: translateX(calc(-50% + 7.5rem)) scale(1.2); // center the image
     transition: all .5s;
 
     /* no longer necessary, without this it still works well in chrome
