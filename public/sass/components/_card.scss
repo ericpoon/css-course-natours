@@ -4,10 +4,10 @@
   position: relative;
   /* the *parent will collapse* if children are absolutely positioning,
   so we need to specify *the same height as children* for the parent element */
-  height: 50rem;
+  height: 52rem;
 
   &__side {
-    height: 50rem;
+    height: 52rem;
     transition: all .8s ease;
     position: absolute; // when use absolute position, always give its parent a relative position
     top: 0;
@@ -81,6 +81,8 @@
     top: 12rem;
     right: 2rem;
     width: 70%;
+
+    z-index: 1; // prevents the heading being clipped by clip-path in __picture
   }
 
   &__heading-span { // not an element of modifier of heading, so don't put this in heading
@@ -97,6 +99,27 @@
               rgba($color-secondary-light, .85),
               rgba($color-secondary-dark, .85)
       );
+    }
+  }
+
+  &__details {
+    padding: 3rem;
+
+    ul { // prevents from using too many different classes (no need for card__list)
+      list-style: none;
+      width: 80%;
+      margin: 0 auto; // *easiest way to center a block element inside a block element*
+
+      li { // prevents from using too many different classes (no need for card__list-item)
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+
+      }
     }
   }
 }
