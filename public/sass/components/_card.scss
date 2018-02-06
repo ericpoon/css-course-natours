@@ -1,0 +1,80 @@
+.card {
+  -moz-perspective: 150rem; // for firefox (this is a new property)
+  perspective: 100rem;
+  position: relative;
+  /* the *parent will collapse* if children are absolutely positioning,
+  so we need to specify *the same height as children* for the parent element */
+  height: 50rem;
+
+  &__side {
+    color: white;
+    font-size: 5rem;
+
+    height: 50rem;
+    transition: all .8s ease;
+    position: absolute; // when use absolute position, always give its parent a relative position
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    backface-visibility: hidden; // hide the back face of an element
+
+    border-radius: .3rem;
+    overflow: hidden; // prevents the image in it from overflowing and hide the border radius
+
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
+
+    &--front {
+      background-color: orangered;
+    }
+
+    &--back {
+      transform: rotateY(-180deg);
+
+      &-color-primary {
+        background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+      }
+      &-color-secondary {
+        background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+      }
+      &-color-tertiary {
+        background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    /* as there are two sides, we have to rotate a child in the card instead of rotating card itself
+    but this also prevents hover being triggered multiple times,
+    try rotate the parent directly instead and see the issue */
+    transform: rotateY(180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+
+  &__picture {
+    background-size: cover;
+    height: 23rem; // came to this number by experimentation
+    background-blend-mode: screen; // blending like Photoshop
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    &--1 { // can only blend two images with background image, so we don't use <img> element here
+      background-image: linear-gradient(
+              to right bottom,
+              $color-secondary-light,
+              $color-secondary-dark),
+      url(../img/nat-5.jpg);
+    }
+
+    &--2 {
+      background-image: url(../img/nat-6.jpg);
+    }
+
+    &--3 {
+      background-image: url(../img/nat-7.jpg);
+    }
+  }
+}
