@@ -36,3 +36,36 @@
   padding: 15rem 0;
   position: relative;
 }
+
+.section-booking {
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+}
+
+/* this is not considered a component style according to the lecturer,
+   because we may not need to reuse it, it's just a home page specific style
+   but we do reuse the 'form' element in this booking element
+*/
+.booking {
+  background-image: linear-gradient(
+          105deg,
+          rgba($color-white, .9) 50%,
+          transparent 50%
+  ), url(../img/nat-10.jpg); // use the solid gradient to achieve the sharp slope, no clip-path needed here
+  /* so we now have more than 1 techniques to achieve the sharp slope,
+     clip-path and solid gradient
+     use different tools for different situations
+  */
+
+  background-size: 100%; // 100% means the same as 'cover'
+  border-radius: .3rem;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
+
+  height: 50rem;
+
+  &__form {
+    width: 50%;
+    padding: 6rem;
+    border: 1px solid orangered;
+  }
+}
