@@ -1,5 +1,6 @@
 .btn {
   /* pseudo class - a special state of a selector */
+  &, // <button> element doesn't have 'link' and 'visited' states
   &:link, /* unvisited links */
   &:visited /* visited links */
   {
@@ -22,6 +23,10 @@
     border-radius: 10rem;
 
     position: relative; /* as the reference of .btn::after */
+
+    // Changes for the <button> element
+    border: none;
+    cursor: pointer;
   }
 
   &:hover {
@@ -42,7 +47,9 @@
     }
   }
 
-  &:active {
+  &:active,
+  &:focus { // Changes for <button> element, for accessibility purpose, we have to have some focus-specific effects
+    outline: none;
     transform: translateY(-.1rem); /* refer to the initial state (btn:link) */
     box-shadow: 0 .5rem 1rem rgba($color-black, .2);
   }
