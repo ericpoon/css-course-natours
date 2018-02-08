@@ -1,0 +1,53 @@
+.form {
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+  &__input {
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba($color-white, .5);
+    border: none;
+    width: 90%;
+    display: block;
+
+    font-family: inherit; // by default, input elements do not inherit font properties
+    color: inherit; // without this, color property in &::-webkit-input-placeholder doesn't work
+
+    /* set an initial state to remove the shaky effect when adding border-bottom when focused */
+    border-bottom: 3px solid transparent;
+
+    &:focus {
+      /* for accessibility purpose, we should always visualize the focus
+         so after setting outline to be none, we should use another way to visualize it */
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color-black, .1);
+      border-bottom: 3px solid $color-primary;
+    }
+
+    &:focus:invalid {
+      border-color: $color-secondary-dark;
+    }
+
+    &::-webkit-input-placeholder { // currently only works in Safari and Chrome
+      color: $color-grey-dark-2;
+    }
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    display: block;
+    transition: all .2s;
+    transform: translateY(0);
+  }
+
+  &__input:placeholder-shown + &__label { // sibling selectors (only work for right siblings), adjacent +, general ~
+    opacity: 0; // we can only animate opacity but not visibility, so we can't just set visibility to hidden
+    visibility: hidden; // with opacity: 0, it's still on the page
+    transform: translateY(-4.2rem);
+  }
+
+}
