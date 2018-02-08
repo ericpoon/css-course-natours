@@ -1,0 +1,58 @@
+.footer {
+  color: $color-grey-light-1;
+  background-color: $color-grey-dark-3;
+  padding: 10rem 0;
+  font-size: 1.4rem;
+
+  &__logo-box {
+    text-align: center;
+  }
+  &__logo {
+    width: 15rem;
+  }
+  &__navigation {
+    border-top: 1px solid $color-grey-dark;
+    padding-top: 2rem;
+
+    /* originally a block,
+    display as an inline-block to avoid taking the full width,
+    so the border-top will not overflow the actual content length */
+    display: inline-block;
+  }
+  &__list {
+    list-style: none;
+  }
+  &__list-item {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
+  &__link {
+
+    &:link,
+    &:visited {
+      color: inherit; // <a> doesn't inherit color
+      background-color: $color-grey-dark-3;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block; // transform property doesn't work on 'inline' element
+      transition: all .2s;
+    }
+
+    &:hover,
+    &:active {
+      color: $color-primary;
+      box-shadow: 0 1rem 3rem rgba($color-black, .4);
+      transform: rotate(2deg) scale(1.2);
+    }
+  }
+
+  &__copyright {
+    // <p> does inherit color, no need to specify again
+    border-top: 1px solid $color-grey-dark;
+    width: 80%; // temporarily fix the issues that left and right sides are not symmetric
+    float: right;
+  }
+}
