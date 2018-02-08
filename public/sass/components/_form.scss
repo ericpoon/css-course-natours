@@ -1,6 +1,9 @@
 .form {
-  &__group:not(:last-child) {
-    margin-bottom: 2rem;
+  &__group {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+    @include clearfix;
   }
   &__input {
     font-size: 1.5rem;
@@ -48,6 +51,54 @@
     opacity: 0; // we can only animate opacity but not visibility, so we can't just set visibility to hidden
     visibility: hidden; // with opacity: 0, it's still on the page
     transform: translateY(-4.2rem);
+  }
+
+  &__radio-group {
+    float: left;
+    width: 50%;
+    display: inline-block;
+  }
+
+  &__radio-label {
+    font-size: $font-size-default;
+    cursor: pointer;
+    display: inline-block;
+    transform: translateX(-1.2rem);
+  }
+
+  // use this to replace the default radio input button, as we can't style it
+  &__radio-button {
+    height: 2.6rem; // 2.5rem may lead to rounding issues
+    width: 2.6rem;
+    border: 3px solid $color-primary;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+
+    &::after {
+      content: "";
+      height: 1.4rem;
+      width: 1.4rem;
+      display: block;
+      border-radius: 50%;
+      position: absolute; // should set parent to be relative (actually absolute works as well)
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $color-primary;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+  }
+
+  &__radio-input {
+    visibility: hidden; // hide the default radio button
+  }
+
+  &__radio-input:checked + &__radio-label &__radio-button::after {
+    // when the radio input is checked, show the ::after element
+    opacity: 1;
   }
 
 }
