@@ -37,6 +37,8 @@
     // trick: make two boxes side-by-side have the same height, children should display as table-cell
     display: table-cell;
     vertical-align: middle;
+
+    padding: 3rem 5rem;
   }
 
   &__image {
@@ -45,6 +47,23 @@
   }
 
   &__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
 
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem; // by default it's 1em, which is 14px as the font-size is 1.4rem here
+    -moz-column-rule: 1px solid $color-grey-light-2;
+
+    column-count: 2;
+    column-gap: 4rem; // by default it's 1em, which is 14px as the font-size is 1.4rem here
+    column-rule: 1px solid $color-grey-light-2;
+
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; // be default it's none
+
+    /* in practice, we should not add prefix by ourselves,
+       but we should use some tools to automatically generate them */
   }
 }
