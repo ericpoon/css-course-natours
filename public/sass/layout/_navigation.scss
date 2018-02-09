@@ -13,7 +13,7 @@
     top: 6rem;
     right: 6rem;
     border-radius: 50%;
-
+    cursor: pointer;
     box-shadow: 0 1rem 3rem rgba($color-black, .1);
 
     z-index: 99; // z-index only works for positioned element (element's position is NOT static)
@@ -49,18 +49,6 @@
     http://cubic-bezier.com
     */
     transition: all .8s cubic-bezier(.35, -0.01, .43, 1.37);
-  }
-
-  &__checkbox:checked ~ &__background {
-    z-index: 98;
-    transform: scale(60);
-  }
-
-  &__checkbox:checked ~ &__nav {
-    z-index: 98;
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(0);
   }
 
   &__list {
@@ -106,4 +94,81 @@
       display: inline-block;
     }
   }
+
+  // TOGGLE FUNCTIONALITY
+  &__checkbox:checked ~ &__background {
+    z-index: 98;
+    transform: scale(60);
+  }
+
+  &__checkbox:checked ~ &__nav {
+    z-index: 98;
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  // ICON
+  &__icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    &,
+    &::before,
+    &::after {
+      // use a 2px-height rectangle as the line in nav button
+      width: 3rem;
+      height: 2px; // no matter what, always 2px
+      background-color: $color-grey-dark-3; // this is the color of each line
+      display: block;
+      transition: all .3s;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+    }
+
+    &::before {
+      position: absolute;
+      transform: translateY(-.8rem);
+    }
+
+    &::after {
+      position: absolute;
+      transform: translateY(.8rem);
+    }
+  }
+
+  &__toggle:hover &__icon {
+    background-color: $color-secondary-dark;
+    &::before {
+      background-color: $color-secondary-dark;
+      transform: translateY(-1rem);
+    }
+    &::after {
+      background-color: $color-secondary-dark;
+      transform: translateY(1rem);
+    }
+  }
+
+  &__checkbox:checked + &__toggle &__icon {
+
+    background-color: transparent;
+    transform: rotate(180deg) translateX(50%);
+
+    &::before {
+      /* this does override the translateY in &__toggle:hover &__icon::before,
+      which happens to be what we want, use Chrome CSS inspector to see */
+      transform: rotate(-45deg);
+    }
+
+    &::after {
+      transform: rotate(45deg);
+    }
+
+  }
+
 }
