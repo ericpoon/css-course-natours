@@ -1,0 +1,109 @@
+.navigation {
+  position: absolute;
+  height: 0;
+
+  &__checkbox {
+    display: none;
+  }
+  &__toggle {
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    border-radius: 50%;
+
+    box-shadow: 0 1rem 3rem rgba($color-black, .1);
+
+    z-index: 99; // z-index only works for positioned element (element's position is NOT static)
+  }
+  &__background {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed; // similar to absolute, take the position out of flow, doesn't change position when scrolling
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient(
+            $color-primary-light,
+            $color-primary-dark
+    );
+    z-index: 97;
+
+    transition: all .8s cubic-bezier(.35, -0.01, .43, 1.37);
+  }
+  &__nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 98;
+    transform: translateX(-3rem);
+
+    /* online tools for custom timing function
+    http://easings.net
+    http://cubic-bezier.com
+    */
+    transition: all .8s cubic-bezier(.35, -0.01, .43, 1.37);
+  }
+
+  &__checkbox:checked ~ &__background {
+    z-index: 98;
+    transform: scale(60);
+  }
+
+  &__checkbox:checked ~ &__nav {
+    z-index: 98;
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &__list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+  }
+  &__list-item {
+    margin: 1rem;
+  }
+  &__link {
+    &:link,
+    &:visited {
+      font-size: 3rem;
+      font-weight: 300;
+      padding: 1rem 2rem;
+      display: block;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-image: linear-gradient(
+              120deg,
+              transparent 50%,
+              $color-white 50%
+      );
+      background-size: 250%; // enlarge the background to hide the white part of the solid gradient
+      transition: all .3s;
+    }
+    &:hover,
+    &:active {
+      background-position: 100%; // move the background to show the white part of the solid gradient
+      color: $color-primary;
+      transform: translateX(1rem);
+    }
+
+    /* this breaks BEM rule that every element should have a class,
+       but it's fine, we don't want to overkill here */
+    span {
+      margin-right: 1rem;
+      display: inline-block;
+    }
+  }
+}
