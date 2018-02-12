@@ -25,10 +25,21 @@ html {
 
   /* better practice, so this doesn't override browser defined one
   but calculate font size based on it*/
-  font-size: 62.5%; /* 10/16 = 0.625 */
+  font-size: 62.5%; /* 10/16 = 0.625, 1rem = 10px */
 
   /* font-size here acts more like an over setting for how we size the entire page,
   so this should not be in _typography.scss, but is a base definition (defines what 1rem is) */
+
+
+  /* the sizes of all elements are dependent on font size,
+  so in responsive design, we firstly change the font-size here to scale element sizes,
+  note: order matters, desktop-first - larger ones should be before the smaller ones! Always narrow down! */
+  @include respond(big-desktop) { font-size: 75% } // 1rem = 12px
+  @include respond(tab-land) { font-size: 56.25% } // 1rem = 9px
+  @include respond(tab-port) { font-size: 50% } // 1rem = 8px
+
+  // note: we don't need this one below, as respond(tab-port) applies to phone as well
+  // @include respond(phone) { font-size: 50% } // 1rem = 8px
 }
 
 /*
