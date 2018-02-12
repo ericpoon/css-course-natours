@@ -417,3 +417,17 @@ Basic breakpoints are for:
 3) landscape tablet
 4) desktop
 5) big desktop
+
+
+##Lecture 60, Section 6
+
+Responsive images
+
+The goal is to serve the right image to the right screen size and device, in order to avoid downloading unnecessary large images on small screens
+
+3 use cases of responsive images:
+1) resolution switching (decreasing image resolution on smaller screen)
+2) density switching (depends on the screen's pixel density, use low resolution image on low resolution screen)
+3) art direction (use different images on screens of different sizes; 
+for example, in a smaller screen, we may want to use an image with the same theme but less distracting elements in it)
+
