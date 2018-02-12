@@ -375,3 +375,45 @@ while CSS grid is great for two-dimensional grid.
 Note: In this course, float layout will be used in 1st project Natours, and then 2nd one will use flexbox and 3rd one will use CSS grid.
 And this is how CSS is moving right now, from float layout to flexbox and to CSS grid.
 
+
+##Lecture 55, Section 6
+
+###Responsive design: Mobile-first and desktop-first
+
+- Desktop-first: start writing CSS for desktop: large screen; then media queries shrink design to smaller screens
+- Mobile-first: start writing CSS for mobile devices: small screen; then media queries expend design to larger screens 
+
+Philosophy behind mobile-first design: it forces us to reduce websites to absolute essentials
+
+**pros of mobile-first:**
+- 100% optimized for mobile experience
+- reduces websites to the absolute essentials
+- results in smaller, faster and efficient products
+- prioritizes content over aesthetic design, which may be desirable
+**cons of mobile-first:**
+- desktop version might feel overly empty and simplistic
+- more difficult and counter-intuitive to develop
+- less creative freedom, making it more difficult to create distinctive product
+
+Do consider the purpose of the website before making a decision on mobile- or desktop-first design
+
+###Media queries
+
+Media queries don't add any importance or specificity to selectors, so code order matters 
+
+max-width: is width **<=** the specified size (used in desktop-first)
+min-width: is width **>=** the specified size (used in mobile-first)
+
+###Breakpoints
+
+- Don't choose breakpoints based on apple's device resolution, this is not general enough and not future-proof
+- A good way (usually applied) is to group devices of similar resolution together and set up breakpoints for each group
+- The best way is to create breakpoints only when the design does not work any more
+(put breakpoints wherever the design starts to look weird, don't think about device at all; but this is very difficult)
+
+Basic breakpoints are for:
+1) mobile phone
+2) portrait tablet
+3) landscape tablet
+4) desktop
+5) big desktop
