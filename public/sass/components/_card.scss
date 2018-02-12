@@ -148,7 +148,7 @@
     }
   }
 
-  // ---------- CONTENT ON FRONT SIDE ----------
+  // ---------- CONTENT ON BACK SIDE ----------
   &__call-to-action {
     position: absolute;
     top: 50%;
@@ -157,7 +157,6 @@
     text-align: center;
     color: white;
     width: 90%;
-
   }
   &__price-only {
     font-size: 1.5rem;
@@ -166,5 +165,54 @@
   &__price-value {
     font-size: 6rem;
     font-weight: 100;
+  }
+}
+
+@include respond(tab-port) {
+  // re-style the card completely
+
+  .card {
+    height: auto;
+    position: relative;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
+
+    &__side {
+      height: auto;
+      transition: all 0s;
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+
+      box-shadow: none;
+
+      &--back {
+        margin-top: -1rem;
+        transform: rotateY(0);
+        -webkit-clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+    &:hover &__side--front {
+      transform: rotateY(0);
+    }
+
+    &__heading {
+      top: 14rem;
+    }
+    &__details {
+      padding: 0 1rem 1rem 1rem;
+    }
+    &__call-to-action {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      padding: 2.5rem 0;
+    }
+    &__price-only {
+      display: none;
+    }
   }
 }

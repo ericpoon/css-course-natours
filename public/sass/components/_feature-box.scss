@@ -9,10 +9,12 @@
 
   &__icon {
     font-size: 6rem;
-    margin-bottom: .5rem;
     background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
     -webkit-background-clip: text;
     color: transparent;
+    @include respond(tab-port) {
+      line-height: 7rem;
+    }
   }
 
   &__text {

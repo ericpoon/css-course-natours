@@ -2,6 +2,9 @@
   &__group {
     &:not(:last-child) {
       margin-bottom: 2rem;
+      @include respond(tab-port) {
+        margin-bottom: .5rem;
+      }
     }
     @include clearfix;
   }
@@ -19,6 +22,10 @@
 
     /* set an initial state to remove the shaky effect when adding border-bottom when focused */
     border-bottom: 3px solid transparent;
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
 
     &:focus {
       /* for accessibility purpose, we should always visualize the focus
@@ -57,6 +64,10 @@
     float: left;
     width: 50%;
     display: inline-block;
+    @include respond(tab-port) {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
   }
 
   &__radio-label {
@@ -101,4 +112,14 @@
     opacity: 1;
   }
 
+  @include respond(phone) {
+    & * .heading-secondary {
+      display: block;
+      text-align: center;
+    }
+    & * .btn {
+      display: block;
+      margin: 0 auto;
+    }
+  }
 }

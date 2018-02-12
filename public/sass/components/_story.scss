@@ -20,6 +20,17 @@
   }
   */
 
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 6rem;
+  }
+  @include respond(phone) {
+    transform: skewX(0);
+    padding: 3rem;
+    padding-left: 4rem;
+  }
+
   &__shape-box {
     width: 15rem;
     height: 15rem;
@@ -38,10 +49,21 @@
 
     // remove side-effect/bug before, during and after hover effect
     overflow: hidden;
+
+    @include respond(tab-port) {
+      transform: translateX(-2rem) skewX(12deg);
+    }
+    @include respond(phone) {
+      transform: translateX(-1rem) skewX(0);
+    }
   }
 
   &__text-box {
     transform: skewX(12deg);
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
   }
 
   &__image {

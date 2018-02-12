@@ -109,3 +109,73 @@
     transform: translate(-50%, -50%) scale(1);
   }
 }
+
+@include respond(tab-port) {
+  .popup {
+    &__content {
+      width: 90%;
+      display: block;
+    }
+
+    &__left {
+      width: 100%;
+      display: block;
+    }
+
+    &__right {
+      width: 100%;
+      display: block;
+    }
+
+    &__image {
+      display: inline-block;
+      width: 50%;
+      float: left;
+    }
+
+    &__close {
+      &:link,
+      &:visited {
+        top: 1rem;
+        right: 1.5rem;
+      }
+    }
+  }
+}
+
+@include respond(phone) {
+  .popup {
+    &__content {
+      width: 90%;
+      display: block;
+    }
+
+    &__left {
+      width: 100%;
+      display: block;
+    }
+
+    &__right {
+      width: 100%;
+      display: block;
+    }
+
+    &__image {
+      display: none;
+    }
+
+    &__text {
+      -moz-column-count: 1;
+      column-count: 1;
+      margin-bottom: 2rem;
+    }
+
+    &__close {
+      &:link,
+      &:visited {
+        top: 1rem;
+        right: 1.5rem;
+      }
+    }
+  }
+}
