@@ -12,10 +12,22 @@ so theoretically this doesn't only center text, but also all inline-blocks
 /* want components to be re-usable, so margin-bottom is not set directly on the components themselves */
 .u-margin-bottom-big {
   margin-bottom: 8rem !important;
+  @include respond(tab-port) {
+    margin-bottom: 4rem !important;
+  }
+  @include respond(tab-port) {
+    margin-bottom: 2rem !important;
+  }
 }
 
 .u-margin-bottom-medium {
   margin-bottom: 4rem !important;
+  @include respond(tab-port) {
+    margin-bottom: 2rem !important;
+  }
+  @include respond(phone) {
+    margin-bottom: 1rem !important;
+  }
 }
 
 .u-margin-bottom-small {
@@ -24,4 +36,10 @@ so theoretically this doesn't only center text, but also all inline-blocks
 
 .u-margin-top-medium {
   margin-top: 4rem !important;
+  @include respond(tab-port) {
+    margin-top: 2rem !important;
+  }
+  @include respond(phone) {
+    margin-top: 1rem !important;
+  }
 }

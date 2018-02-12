@@ -16,6 +16,11 @@
 
   position: relative; /* if child elements are positioned using 'absolute', this will be the origin */
 
+  @include respond(tab-port) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 88vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 88vh, 0 100%); /* can use online css clip-path maker */
+  }
+
   // use nesting
   &__logo-box {
     position: absolute;

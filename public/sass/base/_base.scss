@@ -53,4 +53,8 @@ body {
   padding: 3rem; /* to make entire body has a white border */
 
   box-sizing: border-box;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }

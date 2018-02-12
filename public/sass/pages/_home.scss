@@ -6,6 +6,10 @@
   margin means the space between two elements,
   so negative margin values lead to overlap */
   margin-top: -20vh;
+
+  @include respond(tab-port) {
+    padding: 20rem 0;
+  }
 }
 
 .section-features {
@@ -24,22 +28,46 @@
     transform: skewY(7deg);
   }
   margin-top: -12vh; // move it up to hide the white space
+
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
 }
 
 .section-tours {
   background-color: $color-grey-light-1;
   padding: 20rem 0 10rem 0;
   margin-top: -12vh;
+
+  @include respond(tab-port) {
+    padding: 18rem 0 5rem 0;
+  }
+
+  @include respond(phone) {
+    padding: 15rem 0 3rem 0;
+  }
 }
 
 .section-stories {
   padding: 15rem 0;
   position: relative;
+
+  @include respond(tab-port) {
+    padding: 5rem 0;
+  }
+
+  @include respond(phone) {
+    padding: 3rem 0;
+  }
 }
 
 .section-booking {
   padding: 15rem 0;
   background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+
+  @include respond(tab-port) {
+    padding: 5rem 0;
+  }
 }
 
 /* this is not considered a component style according to the lecturer,
@@ -57,14 +85,29 @@
      use different tools for different situations
   */
 
-  background-size: 100%; // 100% means the same as 'cover'
+  background-size: cover; // 100% means the same as 'cover' (actually not exactly the same, test it)
   border-radius: .3rem;
   box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
 
   height: 50rem;
 
+  @include respond(tab-port) {
+    background-image: linear-gradient(
+            105deg,
+            rgba($color-white, .9) 100%,
+            transparent 100%
+    ), url(../img/nat-10.jpg);
+    padding: 0;
+    height: auto;
+  }
+
   &__form {
     width: 50%;
     padding: 6rem;
+
+    @include respond(tab-port) {
+      width: 100%;
+      padding: 4rem;
+    }
   }
 }

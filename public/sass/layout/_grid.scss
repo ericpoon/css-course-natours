@@ -7,9 +7,24 @@
 
   &:not(:last-child) { // :not pseudo class
     margin-bottom: $gutter-vertical;
+    @include respond(tab-port) {
+      margin-bottom: $gutter-vertical-small;
+    }
+    @include respond(phone) {
+      margin-bottom: $gutter-vertical-tiny;
+    }
   }
 
   @include clearfix; // clearfix hack for float-based layout
+
+  @include respond(tab-port) {
+    max-width: $grid-width-small;
+    padding: 0 3rem;
+  }
+  @include respond(phone) {
+    max-width: $grid-width-tiny;
+    padding: 0 3rem;
+  }
 
   // attribute selector
   // ^= means the beginning with, *= means containing, $= means ending with
@@ -18,6 +33,18 @@
 
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
+      @include respond(tab-port) {
+        margin-right: 0;
+        margin-bottom: $gutter-vertical-small;
+      }
+      @include respond(phone) {
+        margin-right: 0;
+        margin-bottom: $gutter-vertical-tiny;
+      }
+    }
+
+    @include respond(tab-port) {
+      width: 100% !important; // make each column take a full row
     }
   }
 
