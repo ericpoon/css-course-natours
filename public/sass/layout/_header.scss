@@ -8,13 +8,22 @@
           to right bottom,
           rgba($color-primary-light, 0.8),
           rgba($color-primary-dark, 0.8)
-  ), url(../img/hero.jpg);
+  ), url(../img/hero-small.jpg);
   background-size: cover; /* cover means always try to fit */
   background-position: top; /* the fixed edge of the image */
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* can use online css clip-path maker */
 
   position: relative; /* if child elements are positioned using 'absolute', this will be the origin */
+
+  @media(min-resolution: 192dpi) and (min-width: 37.5em), // apple retina screen resolution: 192dpi
+  (min-width: 125em) {
+    background-image: linear-gradient(
+            to right bottom,
+            rgba($color-primary-light, 0.8),
+            rgba($color-primary-dark, 0.8)
+    ), url(../img/hero.jpg);
+  }
 
   @include respond(tab-port) {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 88vh, 0 100%);
