@@ -431,3 +431,8 @@ The goal is to serve the right image to the right screen size and device, in ord
 3) art direction (use different images on screens of different sizes; 
 for example, in a smaller screen, we may want to use an image with the same theme but less distracting elements in it)
 
+##Lecture 64, Section 6
+
+- Many of CSS features in this course are experimental and only work in top modern browsers,
+always check https://caniuse.com before using a modern CSS property in production
+- Use graceful degradation with @supports (feature queries)
