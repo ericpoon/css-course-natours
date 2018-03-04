@@ -7,6 +7,12 @@
   z-index: 99;
   background-color: rgba($color-black, .8);
 
+  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); // currently only works in Safari not Chrome
+    background-color: rgba($color-black, .2);
+  }
+
   // initial state before open
   opacity: 0;
   visibility: hidden;
