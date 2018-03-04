@@ -169,9 +169,13 @@
   }
 }
 
-@include respond(tab-port) {
-  // re-style the card completely
+//@include respond(tab-port) {
+@media only screen and (max-width: 56.25em), // 900px
+       /* touch device has no mouse and cannot hover, the opposite value is (hover: hover) */
+       only screen and (hover: none) { // optimize for large screen mobile device (e.g. iPad Pro)
 
+
+  // re-style the card completely
   .card {
     height: auto;
     position: relative;
