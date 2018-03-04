@@ -16,12 +16,16 @@
 
   position: relative; /* if child elements are positioned using 'absolute', this will be the origin */
 
-  @media(min-resolution: 192dpi) and (min-width: 37.5em), // apple retina screen resolution: 192dpi
-  (min-width: 125em) {
+  // large screen media query
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), // apple retina screen resolution: 192dpi
+         /* without this line, it doesn't work in Safari,
+            `min-resolution: 192dpi` is equivalent to `-webkit-min-device-pixel-ratio: 2` */
+         (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+         (min-width: 125em) {
     background-image: linear-gradient(
             to right bottom,
-            rgba($color-primary-light, 0.8),
-            rgba($color-primary-dark, 0.8)
+            rgba($color-primary-light, 0.4),
+            rgba($color-primary-dark, 0.4)
     ), url(../img/hero.jpg);
   }
 
