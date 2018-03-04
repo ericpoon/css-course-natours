@@ -14,6 +14,7 @@
     left: 0;
     width: 100%;
 
+    -webkit-backface-visibility: hidden; // Safari needs this prefix
     backface-visibility: hidden; // hide the back face of an element
 
     border-radius: .3rem;
