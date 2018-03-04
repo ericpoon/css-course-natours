@@ -36,12 +36,21 @@
     height: 15rem;
     float: left;
 
-    // make the shape a circle (it doesn't display like a circle though)
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%); // to use this, the element must be floated and have defined width and height
+    border-radius: 50%; // graceful degradation for old browsers
 
-    // make it display as a circle
-    clip-path: circle(50% at 50% 50%);
+    /* better UI for new browsers */
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      // make the shape a circle (it doesn't display like a circle though)
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%); // to use this, the element must be floated and have defined width and height
+
+      // make it display as a circle
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+
+      // remove border-radius if clip-path supported
+      border-radius: 0;
+    }
 
     transform: translateX(-3rem) skewX(12deg);
 
