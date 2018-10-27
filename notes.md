@@ -1,14 +1,14 @@
-##Lecture 14, Section 3
+## Lecture 14, Section 3
 
 a CSS rule contains a **selector** and a **declaration block**,
 in a declaration block there are **declarations**,
 and each declaration has **property** and **declared value**
 
-####CSS parsing includes 2 steps:
+#### CSS parsing includes 2 steps:
   1) resolve conflicting CSS declaration
   2) process final CSS values
 
-####Step 1 is also referred as the cascade:
+#### Step 1 is also referred as the cascade:
   *Process of combining different stylesheets and resolving conflicts* in 3 sources
   - author declarations (written by developers)
   - user declarations (due to user interaction/behaviour)
@@ -42,9 +42,9 @@ and each declaration has **property** and **declared value**
       so what the developer writes won't be overridden
 
 
-##Lecture 16, Section 3
+## Lecture 16, Section 3
 
-###Step 2 of parsing CSS - process final CSS values
+### Step 2 of parsing CSS - process final CSS values
 
 Note that all units (%, vh, vw, etc.) are ultimately converted into px in this step
 
@@ -82,7 +82,7 @@ How units are converted from relative to absolute (px)
   1) vw:                      x% of the viewport width
   1) vh:                      x% of the viewport height
 
-####Summary
+#### Summary
   - each property has an initial value, used if nothing is declared and no inheritance
   - browsers specify a root font-size for each page (usually 16px)
   - % and relative values are always converted to px
@@ -94,9 +94,9 @@ How units are converted from relative to absolute (px)
     - vw, vh - percentage measurements of viewport's view and height
 
 
-##Lecture 17, Section 3
+## Lecture 17, Section 3
 
-###Inheritance in CSS
+### Inheritance in CSS
 
 *Recall that every CSS property must have a value*
 
@@ -106,7 +106,7 @@ else specified value = initial value
   - Note that not all properties can be inherited, see docs
   - See 2:11 in lecture 17 for the flow chart
 
-####Summary
+#### Summary
   1) Properties related to text are inherited: font-family, font-size, color, etc.
     - it makes no sense to inherit properties like margin and padding
   2) The computed value of a property is what gets inherited, not the declared value
@@ -116,9 +116,9 @@ else specified value = initial value
   5) The 'initial' keyword resets a property to its initial value
 
 
-##Lecture 19, Section 3
+## Lecture 19, Section 3
 
-###Website rendering: the visual formatting model
+### Website rendering: the visual formatting model
 
 Definition: algorithm that calculate boxes and determines the layout of these boxes 
 for each element in the render tree in order to determine the final layout of the page
@@ -131,7 +131,7 @@ Things to consider when applying visual formatting model algorithm
   - Other elements in the render tree (parents, siblings, children)
   - Viewport size, dimensions of images, etc.
 
-####Dimensions of boxes: The box model
+#### Dimensions of boxes: The box model
 A box model has:
   - Content: text, image, etc.
   - Padding: transparent area around the content, inside of the box
@@ -141,7 +141,7 @@ A box model has:
 
 Use `box-sizing: border-box` to make width and height include padding and border - make life easier
 
-####Box types: Inline, block and inline-block
+#### Box types: Inline, block and inline-block
 1) Block-level boxes
 - 100% of parent's width
 - vertically, one after another (has line break after each)
@@ -160,7 +160,7 @@ Use `box-sizing: border-box` to make width and height include padding and border
 - has height and width
 - has top/bottom padding/margin
 
-####Positioning schemes: Normal flow, absolute positioning and floats
+#### Positioning schemes: Normal flow, absolute positioning and floats
 1) Normal flow
 - default positioning scheme
 - not floated
@@ -189,7 +189,7 @@ position: absolute
 position: fixed
 ```
 
-####Stacking contexts
+#### Stacking contexts
 With multiple layers (mostly created by z-index), elements can overlap each other
 
 Common misconception: only z-index creates new stacking contexts
@@ -202,28 +202,28 @@ Common misconception: only z-index creates new stacking contexts
 4) What's filter property in CSS?
 
 
-##Lecture 20, Section 3
+## Lecture 20, Section 3
 
 Think -> Build -> Architect
 
-###Think: Component-driven design
+### Think: Component-driven design
 - Components are re-usable across a project, and between different projects
 - Components are independent, allowing us to use them anywhere
 - See also Atomic Design - components are analog to organisms
 
-###Build: Block Element Modifier (BEM)
+### Build: Block Element Modifier (BEM)
 - Block: standalone, meaningful on its own
 - Element: part of a block, has no standalone meaning
 - Modifier: a different version of a block or an element
 
 Note: naming convention is `.block__element--modifier {}`
 
-####Benefits
+#### Benefits
 1) never nested - always use a single class name
 2) very low-specificity selectors
 3) easy to maintain
 
-###Architect: 7-1 Pattern
+### Architect: 7-1 Pattern
 7 different folders for partial Sass files, and 1 main Sass file to import all other files into a compiled CSS stylesheet
 1) base/
 2) components/
@@ -234,11 +234,11 @@ Note: naming convention is `.block__element--modifier {}`
 7) vendors/
 
 
-##Lecture 25, Section 4
+## Lecture 25, Section 4
 
 Mixins, extensions and functions in Sass
 
-###Mixins
+### Mixins
 Example:
 ```scss
 @mixin style-link-text($color) {
@@ -254,7 +254,7 @@ li {
 }
 ```
 
-###Extensions
+### Extensions
 Example:
 - SCSS before compiling
 ```scss
@@ -289,7 +289,7 @@ Example:
 }
 ```
 
-####Comparison between **mixins** and **extensions**
+#### Comparison between **mixins** and **extensions**
 From rendering perspective, mostly they have the same result. 
 However, **extensions** modify/copy the selector the achieve this, 
 while **mixins** insert/copy the defined properties into the declaration block.
@@ -330,7 +330,7 @@ Note that this affects the performance of CSS
 
 More information [here](http://thesassway.com/intermediate/understanding-placeholder-selectors)
 
-###Functions
+### Functions
 Sass built-in functions are powerful
 ```scss
 // Sass functions
@@ -348,9 +348,9 @@ div {
 ```
 
 
-##Lecture 33, Section 5
+## Lecture 33, Section 5
 
-###Basic responsive design principles
+### Basic responsive design principles
 1) Fluid grids and layouts
     - To allow content to easily adapt to the current viewport width used to browse the website.
     Use % rather than px for all layout-related lengths.
@@ -361,7 +361,7 @@ div {
     - To change styles on certain viewport widths (breakpoints), allowing us to create
     different version of our website for different widths.
 
-###Layout Typesgs
+### Layout Typesgs
 1) Float layouts
 2) Flexbox
 3) CSS Grid
@@ -376,9 +376,9 @@ Note: In this course, float layout will be used in 1st project Natours, and then
 And this is how CSS is moving right now, from float layout to flexbox and to CSS grid.
 
 
-##Lecture 55, Section 6
+## Lecture 55, Section 6
 
-###Responsive design: Mobile-first and desktop-first
+### Responsive design: Mobile-first and desktop-first
 
 - Desktop-first: start writing CSS for desktop: large screen; then media queries shrink design to smaller screens
 - Mobile-first: start writing CSS for mobile devices: small screen; then media queries expend design to larger screens 
@@ -397,14 +397,14 @@ Philosophy behind mobile-first design: it forces us to reduce websites to absolu
 
 Do consider the purpose of the website before making a decision on mobile- or desktop-first design
 
-###Media queries
+### Media queries
 
 Media queries don't add any importance or specificity to selectors, so code order matters 
 
 max-width: is width **<=** the specified size (used in desktop-first)
 min-width: is width **>=** the specified size (used in mobile-first)
 
-###Breakpoints
+### Breakpoints
 
 - Don't choose breakpoints based on apple's device resolution, this is not general enough and not future-proof
 - A good way (usually applied) is to group devices of similar resolution together and set up breakpoints for each group
@@ -419,7 +419,7 @@ Basic breakpoints are for:
 5) big desktop
 
 
-##Lecture 60, Section 6
+## Lecture 60, Section 6
 
 Responsive images
 
@@ -431,7 +431,7 @@ The goal is to serve the right image to the right screen size and device, in ord
 3) art direction (use different images on screens of different sizes; 
 for example, in a smaller screen, we may want to use an image with the same theme but less distracting elements in it)
 
-##Lecture 64, Section 6
+## Lecture 64, Section 6
 
 - Many of CSS features in this course are experimental and only work in top modern browsers,
 always check https://caniuse.com before using a modern CSS property in production
